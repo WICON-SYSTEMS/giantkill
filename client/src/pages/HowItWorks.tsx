@@ -188,7 +188,7 @@ export default function HowItWorks() {
                   </CardContent>
                 </Card>
                 {index < processSteps.length - 1 && (
-                  <ArrowRight className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-primary h-6 w-6" />
+                  <ArrowRight className="hidden lg:block absolute top-1/2 -right-6 transform -translate-y-1/2 text-primary h-6 w-6" />
                 )}
               </div>
             ))}

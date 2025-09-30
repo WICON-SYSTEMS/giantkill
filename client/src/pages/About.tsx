@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Shield, Users, Award, Globe } from "lucide-react";
 import { Link } from "wouter";
+import AnimatedSection from "@/components/animations/AnimatedSection";
+import StaggerContainer from "@/components/animations/StaggerContainer";
+import HoverCard from "@/components/animations/HoverCard";
 
 const teamMembers = [
   {
@@ -55,7 +58,7 @@ export default function About() {
       {/* Hero Section */}
       <section className="relative py-16 md:py-24 bg-gradient-to-b from-primary/10 to-background">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center max-w-4xl mx-auto">
+          <AnimatedSection className="text-center max-w-4xl mx-auto">
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               About <span className="text-primary">Giant Kill</span>
             </h1>
@@ -63,14 +66,14 @@ export default function About() {
               Leading the fight against capsid bugs and protecting cocoa crops across Cameroon since 2010
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg">
+              <Button asChild size="lg" className="group">
                 <Link href="/contact">Get In Touch</Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="lg" className="group">
                 <Link href="/product">Learn About Our Product</Link>
               </Button>
             </div>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -111,60 +114,64 @@ export default function About() {
       {/* Achievements */}
       <section className="py-16 md:py-24 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
+          <AnimatedSection className="text-center mb-12">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
               Our Impact
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Numbers that speak to our commitment and success in protecting cocoa crops
             </p>
-          </div>
+          </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {achievements.map((achievement, index) => (
-              <Card key={index} className="text-center hover-elevate">
-                <CardContent className="p-6">
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <achievement.icon className="h-8 w-8 text-primary" />
-                  </div>
-                  <h3 className="font-heading text-xl font-bold mb-2">{achievement.title}</h3>
-                  <p className="text-muted-foreground">{achievement.description}</p>
-                </CardContent>
-              </Card>
+              <HoverCard key={index} scale={1.05} rotate={2}>
+                <Card className="text-center hover-elevate">
+                  <CardContent className="p-6">
+                    <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 group">
+                      <achievement.icon className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-200" />
+                    </div>
+                    <h3 className="font-heading text-xl font-bold mb-2">{achievement.title}</h3>
+                    <p className="text-muted-foreground">{achievement.description}</p>
+                  </CardContent>
+                </Card>
+              </HoverCard>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Team Section */}
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
+          <AnimatedSection className="text-center mb-12">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
               Meet Our Team
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Experienced agricultural professionals dedicated to your success
             </p>
-          </div>
+          </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <StaggerContainer className="grid md:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <Card key={index} className="hover-elevate">
-                <CardContent className="p-6 text-center">
-                  <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <Users className="h-12 w-12 text-primary" />
-                  </div>
-                  <h3 className="font-heading text-xl font-bold mb-2">{member.name}</h3>
-                  <Badge variant="secondary" className="mb-3">{member.role}</Badge>
-                  <p className="text-sm text-muted-foreground mb-2">
-                    <strong>{member.experience}</strong> of experience
-                  </p>
-                  <p className="text-sm text-muted-foreground">{member.specialization}</p>
-                </CardContent>
-              </Card>
+              <HoverCard key={index} scale={1.05} rotate={1}>
+                <Card className="hover-elevate">
+                  <CardContent className="p-6 text-center">
+                    <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 group">
+                      <Users className="h-12 w-12 text-primary group-hover:scale-110 transition-transform duration-200" />
+                    </div>
+                    <h3 className="font-heading text-xl font-bold mb-2">{member.name}</h3>
+                    <Badge variant="secondary" className="mb-3">{member.role}</Badge>
+                    <p className="text-sm text-muted-foreground mb-2">
+                      <strong>{member.experience}</strong> of experience
+                    </p>
+                    <p className="text-sm text-muted-foreground">{member.specialization}</p>
+                  </CardContent>
+                </Card>
+              </HoverCard>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
