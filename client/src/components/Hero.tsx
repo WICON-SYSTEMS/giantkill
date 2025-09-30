@@ -1,13 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, BookOpen, Phone } from "lucide-react";
+import ProgressiveImage from "@/components/ui/progressive-image";
 import heroImage from "@assets/generated_images/Healthy_cocoa_plantation_background_bf1ceda3.png";
 
 export default function Hero() {
   return (
     <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroImage})` }}
+      <ProgressiveImage
+        src={heroImage}
+        alt="Healthy cocoa plantation background"
+        className="absolute inset-0 w-full h-full object-cover"
+        priority
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30" />
       

@@ -3,8 +3,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Download, Shield, Zap, Clock, Leaf, Bug } from "lucide-react";
+import { Download, Shield, Zap, Clock, Leaf, Bug, Calculator, Package, MapPin } from "lucide-react";
 import { Link } from "wouter";
+import ProgressiveImage from "@/components/ui/progressive-image";
+import DosageCalculator from "@/components/DosageCalculator";
+import ProductConfigurator from "@/components/ProductConfigurator";
+import InteractiveMap from "@/components/InteractiveMap";
 import productImage from "@assets/generated_images/Giant_Kill_product_bottle_30d02d30.png";
 
 const specifications = [
@@ -112,10 +116,11 @@ export default function Product() {
               </div>
             </div>
             <div className="flex justify-center">
-              <img
+              <ProgressiveImage
                 src={productImage}
                 alt="Giant Kill Product"
-                className="w-full max-w-md"
+                className="w-full max-w-md h-96"
+                priority
               />
             </div>
           </div>
@@ -165,11 +170,13 @@ export default function Product() {
       <section className="py-16 md:py-24 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4">
           <Tabs defaultValue="features" className="w-full">
-            <TabsList className="grid w-full grid-cols-4">
+            <TabsList className="grid w-full grid-cols-6">
               <TabsTrigger value="features">Features</TabsTrigger>
               <TabsTrigger value="specifications">Specifications</TabsTrigger>
               <TabsTrigger value="application">Application</TabsTrigger>
               <TabsTrigger value="safety">Safety</TabsTrigger>
+              <TabsTrigger value="calculator">Calculator</TabsTrigger>
+              <TabsTrigger value="configurator">Configurator</TabsTrigger>
             </TabsList>
 
             <TabsContent value="features" className="mt-8">
@@ -246,6 +253,14 @@ export default function Product() {
                 </CardContent>
               </Card>
             </TabsContent>
+
+            <TabsContent value="calculator" className="mt-8">
+              <DosageCalculator />
+            </TabsContent>
+
+            <TabsContent value="configurator" className="mt-8">
+              <ProductConfigurator />
+            </TabsContent>
           </Tabs>
         </div>
       </section>
@@ -285,6 +300,21 @@ export default function Product() {
               </CardContent>
             </Card>
           </div>
+        </div>
+      </section>
+
+      {/* Interactive Map Section */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+              Our Impact Across Cameroon
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Explore our distribution network and see success stories from farmers across the country
+            </p>
+          </div>
+          <InteractiveMap />
         </div>
       </section>
 
