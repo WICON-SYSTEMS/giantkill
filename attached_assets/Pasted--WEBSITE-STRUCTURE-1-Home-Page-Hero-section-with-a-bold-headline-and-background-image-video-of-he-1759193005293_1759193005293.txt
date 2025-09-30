@@ -1,0 +1,200 @@
+🌐 WEBSITE STRUCTURE
+1. Home Page
+Hero section with a bold headline and background image/video of healthy cocoa plants.
+
+Quick links: [Learn More], [Buy Now], [Contact Us]
+
+2. About Us
+Company story
+
+Vision, mission, values
+
+Our team / Lab and field images
+
+3. Our Product – Giant Kill
+Product description
+
+Features & benefits
+
+Active ingredients (Thiamen 45%, Emamectine 20%)
+
+Before & after effects on crops
+
+Downloadable PDF brochure
+
+4. How It Works
+Animation or infographic on:
+
+How systemic and contact insecticides function
+
+What capsid insects are and why they’re dangerous
+
+Research-backed effectiveness
+
+5. Gallery
+Images:
+
+Damaged crops vs healthy crops
+
+Field demonstrations
+
+Farmers & clients using the product
+
+6. Testimonials
+Reviews from farmers and agriculture professionals
+
+7. Contact Us
+Phone numbers
+
+WhatsApp
+
+Email
+
+Contact form
+
+Google map integration (location in Cameroon)
+
+📝 WEBSITE CONTENT
+🔷 Home Page
+Headline:
+🌿 GIANT KILL – The Ultimate Protection for Your Cocoa Crops
+
+Subheadline:
+Powerful systemic and contact regenerating insecticide – The best solution for capsid control.
+
+CTA Buttons:
+🛒 Buy Now | 📘 Learn More | 📞 Contact Us
+
+Hero Image:
+Healthy cocoa pods + product bottle or application in field (can be from poster)
+
+🔷 About Us
+Who We Are
+VI MA Cameroon is an agricultural solutions provider committed to improving crop yield and protecting farmers' investments. We specialize in advanced pest control products tailored for African agriculture.
+
+Our Mission
+To empower farmers with effective, safe, and affordable crop protection tools.
+
+Our Vision
+A future where every farmer enjoys abundant harvests, free from destructive pests.
+
+🔷 Our Product: GIANT KILL
+What is GIANT KILL?
+GIANT KILL is a powerful insecticide combining systemic and contact action to eradicate capsid bugs and other pests. It works fast, lasts long, and supports crop regeneration.
+
+✔️ Key Features
+
+Dual action: systemic + contact
+
+Regenerates damaged plants
+
+Long-lasting protection
+
+Effective against all stages of capsid
+
+💊 Active Ingredients
+
+Thiamen – 45%
+
+Emamectine – 20%
+
+🌱 Results You Can Trust
+
+2x increase in healthy cocoa pods
+
+85% reduction in crop loss
+
+Trusted by over 1,000 farmers
+
+🔷 How It Works
+How GIANT KILL Protects Your Crops
+
+Absorbed into the plant system
+
+Destroys pests on contact
+
+Prevents further infestation
+
+Boosts plant recovery and productivity
+
+Know the Enemy: The Capsid Bug
+
+Sucks sap from tender shoots
+
+Causes wilting and black pod
+
+Spreads rapidly without control
+
+🔷 Gallery
+Before & After using GIANT KILL
+
+Field application demos
+
+Training workshops
+
+Lab testing photos
+(All from poster and more user-provided images)
+
+🔷 Testimonials
+🗣️ “GIANT KILL saved my entire cocoa farm this season. Nothing else worked like this!”
+— Jean Paul, Farmer – South West Cameroon
+
+🗣️ “Easy to use, fast results, and affordable. A must-have for every cocoa grower.”
+— Maryline A., Agronomist
+
+🔷 Contact Us
+📞 Phone/WhatsApp
+
++237 680 503 113
+
++237 678 473 434
+
+📧 Email
+giantkillgroup@yahoo.com
+
+📍 Address
+123 Anywhere, Cameroon
+
+🌍 www.gaintkill.com
+
+🎨 DESIGN STYLE GUIDE
+🎨 Color Palette
+Primary Green (#00B14F): Nature, agriculture, freshness
+
+Yellow-Orange (#FFC107): Highlighting, call to action
+
+Deep Blue (#1A237E): Trust and professionalism
+
+White (#FFFFFF): Clean background
+
+Red (#D32F2F): Warning/capsid identification
+
+🖋️ Fonts
+Headings: Oswald Bold / Montserrat Extra Bold – Clear, bold for visibility
+
+Body Text: Open Sans / Roboto – Easy to read, clean
+
+Callouts: Lobster / Bungee (for the “KILL” effect)
+
+🧭 Navigation Bar
+Home | About Us | Our Product | How It Works | Testimonials | Contact
+
+📱 Mobile Responsive?
+Yes. Prioritize:
+
+Tappable buttons
+
+WhatsApp integration
+
+Compact gallery
+
+Lightweight for 2G/3G connections
+
+📦 BONUS IDEAS
+WhatsApp Chat Plugin: Direct farmer support
+
+Farmer Resources: PDF guides, safety sheets
+
+Language Options: English & French
+
+E-commerce Add-on: Online ordering & delivery
