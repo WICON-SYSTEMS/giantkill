@@ -9,6 +9,11 @@ import ProgressiveImage from "@/components/ui/progressive-image";
 import DosageCalculator from "@/components/DosageCalculator";
 import ProductConfigurator from "@/components/ProductConfigurator";
 import InteractiveMap from "@/components/InteractiveMap";
+import AnimatedSection from "@/components/animations/AnimatedSection";
+import StaggerContainer from "@/components/animations/StaggerContainer";
+import HoverCard from "@/components/animations/HoverCard";
+import MetaTags from "@/components/seo/MetaTags";
+import StructuredData from "@/components/seo/StructuredData";
 import productImage from "@assets/generated_images/Giant_Kill_product_bottle_30d02d30.png";
 
 const specifications = [
@@ -93,12 +98,52 @@ const safetyInfo = [
 
 export default function Product() {
   return (
-    <PageLayout>
+    <>
+      <MetaTags
+        title="Giant Kill Insecticide - Product Details & Specifications"
+        description="Learn about Giant Kill insecticide specifications, active ingredients (Thiamen 45% + Emamectine 20%), application methods, and safety information. Trusted by 1,000+ farmers in Cameroon."
+        keywords={[
+          "giant kill insecticide",
+          "thiamen emamectine",
+          "capsid control product",
+          "cocoa pesticide",
+          "agricultural insecticide",
+          "pest control cameroon",
+          "crop protection",
+          "systemic insecticide",
+          "contact insecticide",
+          "cocoa farming",
+        ]}
+        type="product"
+        url="/product"
+      />
+      <StructuredData
+        type="product"
+        data={{
+          name: "Giant Kill Insecticide",
+          description: "Powerful systemic and contact insecticide for capsid control",
+          image: productImage,
+          price: "Contact for pricing",
+          reviews: [
+            {
+              author: "Jean Paul",
+              rating: 5,
+              text: "Giant Kill saved my entire cocoa farm this season. Nothing else worked like this!",
+            },
+            {
+              author: "Maryline A.",
+              rating: 5,
+              text: "Easy to use, fast results, and affordable. A must-have for every cocoa grower.",
+            },
+          ],
+        }}
+      />
+      <PageLayout>
       {/* Hero Section */}
       <section className="relative py-16 md:py-24 bg-gradient-to-b from-primary/10 to-background">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
+            <AnimatedSection delay={0.2}>
               <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                 <span className="text-primary">Giant Kill</span> Insecticide
               </h1>
@@ -114,15 +159,19 @@ export default function Product() {
                   <Link href="/how-it-works">How It Works</Link>
                 </Button>
               </div>
-            </div>
-            <div className="flex justify-center">
-              <ProgressiveImage
-                src={productImage}
-                alt="Giant Kill Product"
-                className="w-full max-w-md h-96"
-                priority
-              />
-            </div>
+            </AnimatedSection>
+            <AnimatedSection delay={0.4} direction="right">
+              <div className="flex justify-center">
+                <HoverCard scale={1.05}>
+                  <ProgressiveImage
+                    src={productImage}
+                    alt="Giant Kill Product"
+                    className="w-full max-w-md h-96"
+                    priority
+                  />
+                </HoverCard>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -130,7 +179,7 @@ export default function Product() {
       {/* Product Overview */}
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
+          <AnimatedSection className="text-center mb-12">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
               Product Overview
             </h2>
@@ -138,31 +187,37 @@ export default function Product() {
               Giant Kill is a powerful systemic and contact insecticide specifically 
               formulated to control capsid bugs and other sucking pests in cocoa crops.
             </p>
-          </div>
+          </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <Card className="text-center hover-elevate">
-              <CardContent className="p-6">
-                <div className="text-4xl font-bold text-primary mb-2">45%</div>
-                <div className="text-lg font-semibold mb-2">Thiamen</div>
-                <div className="text-sm text-muted-foreground">Systemic action for internal protection</div>
-              </CardContent>
-            </Card>
-            <Card className="text-center hover-elevate">
-              <CardContent className="p-6">
-                <div className="text-4xl font-bold text-primary mb-2">20%</div>
-                <div className="text-lg font-semibold mb-2">Emamectine</div>
-                <div className="text-sm text-muted-foreground">Contact action for immediate control</div>
-              </CardContent>
-            </Card>
-            <Card className="text-center hover-elevate">
-              <CardContent className="p-6">
-                <div className="text-4xl font-bold text-primary mb-2">21</div>
-                <div className="text-lg font-semibold mb-2">Days</div>
-                <div className="text-sm text-muted-foreground">Long-lasting protection</div>
-              </CardContent>
-            </Card>
-          </div>
+          <StaggerContainer className="grid md:grid-cols-3 gap-8 mb-12">
+            <HoverCard>
+              <Card className="text-center hover-elevate">
+                <CardContent className="p-6">
+                  <div className="text-4xl font-bold text-primary mb-2">45%</div>
+                  <div className="text-lg font-semibold mb-2">Thiamen</div>
+                  <div className="text-sm text-muted-foreground">Systemic action for internal protection</div>
+                </CardContent>
+              </Card>
+            </HoverCard>
+            <HoverCard>
+              <Card className="text-center hover-elevate">
+                <CardContent className="p-6">
+                  <div className="text-4xl font-bold text-primary mb-2">20%</div>
+                  <div className="text-lg font-semibold mb-2">Emamectine</div>
+                  <div className="text-sm text-muted-foreground">Contact action for immediate control</div>
+                </CardContent>
+              </Card>
+            </HoverCard>
+            <HoverCard>
+              <Card className="text-center hover-elevate">
+                <CardContent className="p-6">
+                  <div className="text-4xl font-bold text-primary mb-2">21</div>
+                  <div className="text-lg font-semibold mb-2">Days</div>
+                  <div className="text-sm text-muted-foreground">Long-lasting protection</div>
+                </CardContent>
+              </Card>
+            </HoverCard>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -339,5 +394,6 @@ export default function Product() {
         </div>
       </section>
     </PageLayout>
+    </>
   );
 }
