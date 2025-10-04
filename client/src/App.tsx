@@ -6,6 +6,10 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import PerformanceMonitor from "@/components/PerformanceMonitor";
 import ScrollProgress from "@/components/animations/ScrollProgress";
+import AccessibilityProvider from "@/components/accessibility/AccessibilityProvider";
+import AccessibilitySettings from "@/components/accessibility/AccessibilitySettings";
+import SkipNavigation from "@/components/accessibility/SkipNavigation";
+import PWAInstallPrompt from "@/components/mobile/PWAInstallPrompt";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/not-found";
 import About from "@/pages/About";
@@ -31,14 +35,19 @@ function Router() {
 function App() {
   return (
     <HelmetProvider>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <ScrollProgress />
-          <Router />
-          <PerformanceMonitor />
-        </TooltipProvider>
-      </QueryClientProvider>
+      <AccessibilityProvider>
+        <QueryClientProvider client={queryClient}>
+          <TooltipProvider>
+            <SkipNavigation />
+            <Toaster />
+            <ScrollProgress />
+            <Router />
+            <PerformanceMonitor />
+            <AccessibilitySettings />
+            <PWAInstallPrompt />
+          </TooltipProvider>
+        </QueryClientProvider>
+      </AccessibilityProvider>
     </HelmetProvider>
   );
 }
