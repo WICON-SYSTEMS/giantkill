@@ -117,6 +117,7 @@ export default function Hero() {
           variants={containerVariants}
         >
           <motion.div variants={buttonVariants}>
+            <a href="/product">
             <MotionButton 
               size="lg" 
               className="bg-chart-2 hover:bg-chart-2 p-3 text-black font-semibold group"
@@ -130,9 +131,12 @@ export default function Hero() {
               <ShoppingCart className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform duration-200" />
               Buy Now
             </MotionButton>
+            </a>
+            
           </motion.div>
           
           <motion.div variants={buttonVariants}>
+            <a href="/how-it-works">
             <MotionButton 
               size="lg" 
               variant="outline" 
@@ -147,24 +151,10 @@ export default function Hero() {
               <BookOpen className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform duration-200" />
               Learn More
             </MotionButton>
+            </a>           
           </motion.div>
           
-          <motion.div variants={buttonVariants}>
-            <MotionButton 
-              size="lg" 
-              className="bg-primary p-3 hover:bg-primary group"
-              data-testid="button-contact-us"
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 10px 25px rgba(0, 177, 79, 0.3)"
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Phone className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform duration-200" />
-              Contact Us
-            </MotionButton>
-          </motion.div>
-        </motion.div>
+              </motion.div>
       </motion.div>
     </section>
   );

@@ -43,7 +43,7 @@ export default function Contact() {
         </AnimatedSection>
 
         <div className="grid md:grid-cols-2 gap-8">
-          <AnimatedSection delay={0.2} direction="left">
+          <AnimatedSection delay={0.2} >
             <HoverCard scale={1.02}>
               <Card>
                 <CardHeader>
@@ -60,7 +60,7 @@ export default function Contact() {
                         placeholder="Your name"
                         required
                         data-testid="input-name"
-                        className="transition-all duration-200 focus:scale-105"
+                        className="transition-all duration-200 "
                       />
                     </div>
                     <div>
@@ -73,7 +73,7 @@ export default function Contact() {
                         placeholder="your@email.com"
                         required
                         data-testid="input-email"
-                        className="transition-all duration-200 focus:scale-105"
+                        className="transition-all duration-200 "
                       />
                     </div>
                     <div>
@@ -85,7 +85,7 @@ export default function Contact() {
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="+237..."
                         data-testid="input-phone"
-                        className="transition-all duration-200 focus:scale-105"
+                        className="transition-all duration-200 "
                       />
                     </div>
                     <div>
@@ -98,7 +98,7 @@ export default function Contact() {
                         rows={4}
                         required
                         data-testid="input-message"
-                        className="transition-all duration-200 focus:scale-105"
+                        className="transition-all duration-200 "
                       />
                     </div>
                     <MotionButton 

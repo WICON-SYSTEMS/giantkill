@@ -386,10 +386,10 @@ export default function Product() {
             <Button asChild size="lg" variant="secondary" className="text-primary">
               <Link href="/contact">Order Now</Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+            {/* <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
               <Download className="mr-2 h-5 w-5" />
               Download Brochure
-            </Button>
+            </Button> */}
           </div>
         </div>
       </section>

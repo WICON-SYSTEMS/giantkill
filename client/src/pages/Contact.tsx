@@ -27,7 +27,7 @@ const contactMethods = [
   {
     icon: MapPin,
     title: "Visit Us",
-    details: ["123 Agricultural District", "Douala, Cameroon"],
+    details: ["123", "Anywhere, Cameroon"],
     description: "Visit our office for in-person consultation",
     action: "Get Directions"
   },
@@ -302,8 +302,7 @@ export default function Contact() {
                       <div>
                         <div className="font-medium">Address</div>
                         <div className="text-sm text-muted-foreground">
-                          123 Agricultural District<br />
-                          Douala, Cameroon
+                          123 Anywhere, Cameroon
                         </div>
                       </div>
                     </div>
