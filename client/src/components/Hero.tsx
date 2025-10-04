@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import MotionButton from "@/components/ui/motion-button";
-import { ShoppingCart, BookOpen, Phone } from "lucide-react";
+import { ShoppingCart, BookOpen, Phone, ArrowDown } from "lucide-react";
 import ProgressiveImage from "@/components/ui/progressive-image";
 import { motion } from "framer-motion";
 import heroImage from "@assets/generated_images/Healthy_cocoa_plantation_background_bf1ceda3.png";
@@ -54,7 +54,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
+    <section className="relative h-[100vh] min-h-[600px] max-h-[800px] flex items-center justify-center overflow-hidden">
       <motion.div
         className="absolute inset-0"
         initial={{ scale: 1.1 }}
@@ -70,11 +70,19 @@ export default function Hero() {
       </motion.div>
       
       <motion.div 
-        className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/30"
+        className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.5 }}
       />
+      
+      {/* Bottom fade for smooth transition */}
+      {/* <motion.div 
+        className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, delay: 1 }}
+      /> */}
       
       <motion.div 
         className="relative z-10 max-w-4xl mx-auto px-4 text-center"
@@ -113,7 +121,7 @@ export default function Hero() {
         </motion.p>
         
         <motion.div 
-          className="flex flex-wrap justify-center gap-4"
+          className="flex flex-wrap justify-center gap-4 mb-16"
           variants={containerVariants}
         >
           <motion.div variants={buttonVariants}>
@@ -132,7 +140,6 @@ export default function Hero() {
               Buy Now
             </MotionButton>
             </a>
-            
           </motion.div>
           
           <motion.div variants={buttonVariants}>
@@ -151,10 +158,31 @@ export default function Hero() {
               <BookOpen className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform duration-200" />
               Learn More
             </MotionButton>
-            </a>           
+            </a>
           </motion.div>
-          
-              </motion.div>
+        </motion.div>
+
+        {/* Scroll Indicator - Centered and Clean */}
+        <motion.div 
+          className="flex mt-10 flex-col items-center justify-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 2 }}
+        >
+          <motion.div 
+            className="flex flex-col items-center cursor-pointer group"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            whileHover={{ scale: 1.1 }}
+          >
+            <div className="text-white/80 text-lg font-medium mb-3 group-hover:text-white transition-colors duration-300">
+              Scroll Down
+            </div>
+            <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
+              <ArrowDown className="h-5 w-5 text-white group-hover:text-primary transition-colors duration-300" />
+            </div>
+          </motion.div>
+        </motion.div>
       </motion.div>
     </section>
   );

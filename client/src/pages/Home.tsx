@@ -1,5 +1,6 @@
 import PageLayout from "@/components/PageLayout";
 import Hero from "@/components/Hero";
+import HeroTransition from "@/components/HeroTransition";
 import Features from "@/components/Features";
 import ProductShowcase from "@/components/ProductShowcase";
 import HowItWorks from "@/components/HowItWorks";
@@ -41,15 +42,17 @@ export default function Home() {
           url: "https://giantkill.com",
         }}
       />
-      <PageLayout>
-        <Hero />
-        <Features />
-        <ProductShowcase />
-        <HowItWorks />
-        <Gallery />
-        <Testimonials />
-        <Contact />
-      </PageLayout>
+          <PageLayout>
+            <Hero />
+            
+            <Features />
+            <ProductShowcase />
+            <HowItWorks />
+            <Gallery />
+            <Testimonials />
+            <HeroTransition />
+            <Contact />
+          </PageLayout>
     </>
   );
 }

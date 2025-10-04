@@ -36,7 +36,7 @@ export default function AccessibilitySettings() {
 
   return (
     <>
-      <Button
+      {/* <Button
         variant="outline"
         size="sm"
         onClick={() => setIsOpen(true)}
@@ -45,7 +45,7 @@ export default function AccessibilitySettings() {
       >
         <Settings className="h-4 w-4 mr-2" />
         Accessibility
-      </Button>
+      </Button> */}
 
       {isOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">

@@ -84,7 +84,7 @@ export default function ProductShowcase() {
                 </div>
               </div>
 
-              <AnimatedSection delay={1.2}>
+              {/* <AnimatedSection delay={1.2}>
                 <MotionButton 
                   className="bg-chart-2 hover:bg-chart-2 p-3 text-black font-semibold group" 
                   data-testid="button-download-brochure"
@@ -97,7 +97,7 @@ export default function ProductShowcase() {
                   <Download className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform duration-200" />
                   Download Product Brochure
                 </MotionButton>
-              </AnimatedSection>
+              </AnimatedSection> */}
             </div>
           </AnimatedSection>
         </div>
