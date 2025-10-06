@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
+// import WhatsAppButton from "@/components/WhatsAppButton";
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -15,7 +15,7 @@ export default function PageLayout({ children, className = "" }: PageLayoutProps
         {children}
       </main>
       <Footer />
-      <WhatsAppButton />
+      {/* <WhatsAppButton /> */}
     </div>
   );
 }
