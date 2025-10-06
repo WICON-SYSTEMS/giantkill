@@ -225,26 +225,26 @@ export default function Product() {
       <section className="py-16 md:py-24 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4">
           <Tabs defaultValue="features" className="w-full">
-            <TabsList className="grid w-full grid-cols-6">
-              <TabsTrigger value="features">Features</TabsTrigger>
-              <TabsTrigger value="specifications">Specifications</TabsTrigger>
-              <TabsTrigger value="application">Application</TabsTrigger>
-              <TabsTrigger value="safety">Safety</TabsTrigger>
-              <TabsTrigger value="calculator">Calculator</TabsTrigger>
-              <TabsTrigger value="configurator">Configurator</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-1 h-auto p-1">
+              <TabsTrigger value="features" className="text-xs md:text-sm px-2 py-2 h-auto">Features</TabsTrigger>
+              <TabsTrigger value="specifications" className="text-xs md:text-sm px-2 py-2 h-auto">Specs</TabsTrigger>
+              <TabsTrigger value="application" className="text-xs md:text-sm px-2 py-2 h-auto">Application</TabsTrigger>
+              <TabsTrigger value="safety" className="text-xs md:text-sm px-2 py-2 h-auto">Safety</TabsTrigger>
+              <TabsTrigger value="calculator" className="text-xs md:text-sm px-2 py-2 h-auto">Calculator</TabsTrigger>
+              <TabsTrigger value="configurator" className="text-xs md:text-sm px-2 py-2 h-auto">Config</TabsTrigger>
             </TabsList>
 
             <TabsContent value="features" className="mt-8">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {features.map((feature, index) => (
                   <Card key={index} className="hover-elevate">
-                    <CardContent className="p-6">
-                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                        <feature.icon className="h-6 w-6 text-primary" />
+                    <CardContent className="p-4 md:p-6">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3 md:mb-4">
+                        <feature.icon className="h-5 w-5 md:h-6 md:w-6 text-primary" />
                       </div>
-                      <h3 className="font-heading text-xl font-bold mb-2">{feature.title}</h3>
-                      <p className="text-muted-foreground mb-3">{feature.description}</p>
-                      <p className="text-sm text-muted-foreground">{feature.details}</p>
+                      <h3 className="font-heading text-lg md:text-xl font-bold mb-2">{feature.title}</h3>
+                      <p className="text-muted-foreground mb-2 md:mb-3 text-sm md:text-base">{feature.description}</p>
+                      <p className="text-xs md:text-sm text-muted-foreground">{feature.details}</p>
                     </CardContent>
                   </Card>
                 ))}
@@ -253,15 +253,15 @@ export default function Product() {
 
             <TabsContent value="specifications" className="mt-8">
               <Card>
-                <CardHeader>
-                  <CardTitle>Product Specifications</CardTitle>
+                <CardHeader className="pb-4">
+                  <CardTitle className="text-lg md:text-xl">Product Specifications</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-4">
+                <CardContent className="p-4 md:p-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                     {specifications.map((spec, index) => (
-                      <div key={index} className="flex justify-between py-2 border-b border-border">
-                        <span className="font-medium">{spec.label}:</span>
-                        <span className="text-muted-foreground">{spec.value}</span>
+                      <div key={index} className="flex flex-col sm:flex-row sm:justify-between py-2 border-b border-border gap-1">
+                        <span className="font-medium text-sm md:text-base">{spec.label}:</span>
+                        <span className="text-muted-foreground text-sm md:text-base break-words">{spec.value}</span>
                       </div>
                     ))}
                   </div>
@@ -270,16 +270,16 @@ export default function Product() {
             </TabsContent>
 
             <TabsContent value="application" className="mt-8">
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                 {applicationSteps.map((step, index) => (
                   <Card key={index} className="hover-elevate">
-                    <CardContent className="p-6 text-center">
-                      <div className="w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold mx-auto mb-4">
+                    <CardContent className="p-4 md:p-6 text-center">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-lg md:text-xl font-bold mx-auto mb-3 md:mb-4">
                         {step.step}
                       </div>
-                      <h3 className="font-heading text-lg font-bold mb-2">{step.title}</h3>
-                      <p className="text-muted-foreground mb-2">{step.description}</p>
-                      <p className="text-sm text-muted-foreground">{step.details}</p>
+                      <h3 className="font-heading text-base md:text-lg font-bold mb-2">{step.title}</h3>
+                      <p className="text-muted-foreground mb-2 text-sm md:text-base">{step.description}</p>
+                      <p className="text-xs md:text-sm text-muted-foreground">{step.details}</p>
                     </CardContent>
                   </Card>
                 ))}
@@ -288,20 +288,20 @@ export default function Product() {
 
             <TabsContent value="safety" className="mt-8">
               <Card>
-                <CardHeader>
-                  <CardTitle>Safety Information</CardTitle>
+                <CardHeader className="pb-4">
+                  <CardTitle className="text-lg md:text-xl">Safety Information</CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="p-4 md:p-6">
                   <div className="space-y-3">
                     {safetyInfo.map((item, index) => (
                       <div key={index} className="flex items-start gap-3">
                         <div className="w-2 h-2 rounded-full bg-destructive mt-2 flex-shrink-0" />
-                        <span>{item}</span>
+                        <span className="text-sm md:text-base">{item}</span>
                       </div>
                     ))}
                   </div>
-                  <div className="mt-6 p-4 bg-destructive/10 border border-destructive/30 rounded-lg">
-                    <p className="text-sm font-medium text-destructive">
+                  <div className="mt-4 md:mt-6 p-3 md:p-4 bg-destructive/10 border border-destructive/30 rounded-lg">
+                    <p className="text-xs md:text-sm font-medium text-destructive">
                       ⚠️ Always read and follow the product label instructions before use.
                     </p>
                   </div>
@@ -323,35 +323,35 @@ export default function Product() {
       {/* Results Section */}
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
               Proven Results
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
               Real data from field trials and farmer feedback
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             <Card className="text-center hover-elevate">
-              <CardContent className="p-8">
-                <div className="text-5xl font-bold text-primary mb-2">85%</div>
-                <div className="text-lg font-semibold mb-2">Reduction in Crop Loss</div>
-                <div className="text-muted-foreground">Average improvement in crop yield</div>
+              <CardContent className="p-4 md:p-8">
+                <div className="text-3xl md:text-5xl font-bold text-primary mb-2">85%</div>
+                <div className="text-base md:text-lg font-semibold mb-2">Reduction in Crop Loss</div>
+                <div className="text-muted-foreground text-sm md:text-base">Average improvement in crop yield</div>
               </CardContent>
             </Card>
             <Card className="text-center hover-elevate">
-              <CardContent className="p-8">
-                <div className="text-5xl font-bold text-primary mb-2">2x</div>
-                <div className="text-lg font-semibold mb-2">Increase in Healthy Pods</div>
-                <div className="text-muted-foreground">More productive cocoa trees</div>
+              <CardContent className="p-4 md:p-8">
+                <div className="text-3xl md:text-5xl font-bold text-primary mb-2">2x</div>
+                <div className="text-base md:text-lg font-semibold mb-2">Increase in Healthy Pods</div>
+                <div className="text-muted-foreground text-sm md:text-base">More productive cocoa trees</div>
               </CardContent>
             </Card>
-            <Card className="text-center hover-elevate">
-              <CardContent className="p-8">
-                <div className="text-5xl font-bold text-primary mb-2">95%</div>
-                <div className="text-lg font-semibold mb-2">Farmer Satisfaction</div>
-                <div className="text-muted-foreground">Would recommend to other farmers</div>
+            <Card className="text-center hover-elevate sm:col-span-2 lg:col-span-1">
+              <CardContent className="p-4 md:p-8">
+                <div className="text-3xl md:text-5xl font-bold text-primary mb-2">95%</div>
+                <div className="text-base md:text-lg font-semibold mb-2">Farmer Satisfaction</div>
+                <div className="text-muted-foreground text-sm md:text-base">Would recommend to other farmers</div>
               </CardContent>
             </Card>
           </div>
@@ -374,16 +374,16 @@ export default function Product() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-primary text-primary-foreground">
+      <section className="py-12 md:py-16 lg:py-24 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="font-heading text-2xl md:text-3xl lg:text-4xl font-bold mb-4">
             Ready to Protect Your Crops?
           </h2>
-          <p className="text-xl mb-8 opacity-90">
+          <p className="text-base md:text-xl mb-6 md:mb-8 opacity-90 max-w-2xl mx-auto">
             Get Giant Kill today and join thousands of successful farmers
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button asChild size="lg" variant="secondary" className="text-primary">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 md:gap-4">
+            <Button asChild size="lg" variant="secondary" className="text-primary w-full sm:w-auto">
               <Link href="/contact">Order Now</Link>
             </Button>
             {/* <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
