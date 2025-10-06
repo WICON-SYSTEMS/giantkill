@@ -11,7 +11,7 @@ export default function ProductShowcase() {
     <section className="py-16 md:py-24 bg-muted/30">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <AnimatedSection delay={0.2} direction="left">
+          <AnimatedSection delay={0.2} direction="up">
             <HoverCard scale={1.05}>
               <img
                 src={productImage}

@@ -26,7 +26,7 @@ const locations: MapLocation[] = [
     coordinates: { lat: 4.0483, lng: 9.7043 },
     type: "office",
     data: {
-      phone: "+237 680 503 113",
+      phone: "",
       farmersServed: 250,
       successRate: 95,
     },

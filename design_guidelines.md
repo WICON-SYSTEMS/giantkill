@@ -117,7 +117,7 @@
 
 ### G. Special Features
 **WhatsApp Integration:**
-- Floating button (fixed bottom-right): `+237 680 503 113` and `+237 678 473 434`
+- Floating button (fixed bottom-right): `` and `+237 678 473 434`
 - Green circular button (bg-green-600) with WhatsApp icon
 - Click opens WhatsApp chat with pre-filled message
 

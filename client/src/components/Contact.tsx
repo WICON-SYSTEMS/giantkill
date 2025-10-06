@@ -130,7 +130,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-heading font-bold mb-2">Phone / WhatsApp</h3>
-                      <p className="text-muted-foreground">+237 680 503 113</p>
+                      <p className="text-muted-foreground"></p>
                       <p className="text-muted-foreground">+237 678 473 434</p>
                     </div>
                   </div>

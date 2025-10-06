@@ -60,7 +60,7 @@ export default function Footer() {
           <div>
             <h3 className="font-heading font-bold mb-4">Contact Info</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>+237 680 503 113</li>
+              <li></li>
               <li>+237 678 473 434</li>
               <li>giantkillgroup@yahoo.com</li>
               <li>www.gaintkill.com</li>

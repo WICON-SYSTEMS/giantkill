@@ -13,7 +13,7 @@ const contactMethods = [
   {
     icon: Phone,
     title: "Phone & WhatsApp",
-    details: ["+237 680 503 113", "+237 678 473 434"],
+    details: ["", "+237 678 473 434"],
     description: "Call or WhatsApp us for immediate assistance",
     action: "Call Now"
   },
@@ -311,7 +311,7 @@ export default function Contact() {
                       <div>
                         <div className="font-medium">Phone Numbers</div>
                         <div className="text-sm text-muted-foreground">
-                          +237 680 503 113<br />
+                          <br />
                           +237 678 473 434
                         </div>
                       </div>
