@@ -12,7 +12,7 @@ export default function Navigation() {
   const navItems = [
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
-    { name: "Our Product", path: "/product" },
+    { name: "Our Products", path: "/products" },
     { name: "How It Works", path: "/how-it-works" },
     { name: "Testimonials", path: "/testimonials" },
     { name: "Contact", path: "/contact" },

@@ -9,7 +9,7 @@ import FocusTrap from '@/components/accessibility/FocusTrap';
 const navigationItems = [
   { href: '/', label: 'Home', icon: Home },
   { href: '/about', label: 'About', icon: Info },
-  { href: '/product', label: 'Product', icon: Package },
+  { href: '/products', label: 'Our Products', icon: Package },
   { href: '/how-it-works', label: 'How It Works', icon: Settings },
   { href: '/testimonials', label: 'Testimonials', icon: Users },
   { href: '/contact', label: 'Contact', icon: MessageCircle },
@@ -55,14 +55,14 @@ export default function MobileNavigation() {
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b">
               <h2 className="text-lg font-semibold">Menu</h2>
-              <Button
+              {/* <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsOpen(false)}
                 aria-label="Close navigation menu"
               >
                 <X className="h-6 w-6" />
-              </Button>
+              </Button> */}
             </div>
 
             {/* Navigation Items */}
