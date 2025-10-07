@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import MotionButton from "@/components/ui/motion-button";
-import { ShoppingCart, BookOpen, Phone, ArrowDown, ChevronLeft, ChevronRight, Circle, TrendingUp } from "lucide-react";
+import { ShoppingCart, BookOpen, Phone, ArrowDown, ChevronLeft, ChevronRight, TrendingUp } from "lucide-react";
 import ProgressiveImage from "@/components/ui/progressive-image";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect } from "react";
@@ -11,13 +11,14 @@ import heroImage3 from "@assets/generated_images/Field_application_demonstration
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
   const heroSlides = [
     {
       id: 1,
       image: heroImage1,
       title: "GIANT KILL",
-      subtitle: "– The Ultimate Protection for Your Cocoa Crops",
+      subtitle: "The Ultimate Protection for Your Cocoa Crops",
       description: "Powerful systemic and contact regenerating insecticide – The best solution for capsid control.",
       primaryButton: { text: "Buy Now", href: "/product", icon: ShoppingCart },
       secondaryButton: { text: "Learn More", href: "/how-it-works", icon: BookOpen }
@@ -26,7 +27,7 @@ export default function Hero() {
       id: 2,
       image: heroImage2,
       title: "TRUSTED BY FARMERS",
-      subtitle: "– Real Results, Real Success",
+      subtitle: "Real Results, Real Success",
       description: "Join over 1,000 farmers who have transformed their cocoa yields with Giant Kill.",
       primaryButton: { text: "See Results", href: "/testimonials", icon: TrendingUp },
       secondaryButton: { text: "Our Story", href: "/about", icon: BookOpen }
@@ -35,12 +36,28 @@ export default function Hero() {
       id: 3,
       image: heroImage3,
       title: "HEALTHY HARVESTS",
-      subtitle: "– Protect Your Livelihood",
+      subtitle: "Protect Your Livelihood",
       description: "Ensure bountiful cocoa harvests with our proven pest control solution.",
       primaryButton: { text: "Get Started", href: "/contact", icon: Phone },
-      secondaryButton: { text: "View Gallery", href: "/gallery", icon: BookOpen }
+      secondaryButton: { text: "View Gallery", href: "/products", icon: BookOpen }
     }
   ];
+
+  // Preload images for smooth transitions
+  useEffect(() => {
+    const imagePromises = heroSlides.map((slide) => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.src = slide.image;
+        img.onload = resolve;
+        img.onerror = resolve;
+      });
+    });
+
+    Promise.all(imagePromises).then(() => {
+      setTimeout(() => setImagesLoaded(true), 500);
+    });
+  }, []);
 
   // Auto-play functionality
   useEffect(() => {
@@ -68,42 +85,19 @@ export default function Hero() {
     setIsAutoPlaying(false);
   };
 
-  const containerVariants = {
+  // Animation variants
+  const contentVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2,
+        staggerChildren: 0.15,
+        delayChildren: 0.1,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      },
-    },
-  };
-
-  const titleVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 1,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      },
-    },
-  };
-
-  const buttonVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
@@ -115,15 +109,24 @@ export default function Hero() {
     },
   };
 
-  const slideVariants = {
-    enter: { x: "100%" },
-    center: { x: 0 },
-    exit: { x: "-100%" }
+  // Smooth fade transition after images load
+  const slideVariants = imagesLoaded ? {
+    enter: { opacity: 0, scale: 1.05 },
+    center: { opacity: 1, scale: 1 },
+    exit: { opacity: 0, scale: 0.95 }
+  } : {
+    enter: { x: "100%", opacity: 0 },
+    center: { x: 0, opacity: 1 },
+    exit: { x: "-100%", opacity: 0 }
   };
 
+  const slideTransition = imagesLoaded 
+    ? { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }
+    : { duration: 0.8, ease: "easeInOut" };
+
   return (
-    <section className="relative h-[100vh]  flex items-center justify-center overflow-hidden">
-      {/* Image Carousel */}
+    <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+      {/* Image Carousel Background */}
       <div className="absolute inset-0">
         <AnimatePresence mode="wait">
           <motion.div
@@ -133,11 +136,11 @@ export default function Hero() {
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.8, ease: "easeInOut" }}
+            transition={slideTransition}
           >
             <ProgressiveImage
               src={heroSlides[currentSlide].image}
-              alt={`Hero slide ${currentSlide + 1}`}
+              alt={`${heroSlides[currentSlide].title} - Cocoa farming`}
               className="w-full h-full object-cover"
               priority
             />
@@ -146,171 +149,140 @@ export default function Hero() {
       </div>
       
       {/* Gradient Overlay */}
-      <motion.div 
-        className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/20"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
       
-      {/* Navigation Arrows */}
-      <motion.button
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 group"
+      {/* Navigation Arrows - Desktop Only */}
+      <button
+        className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 items-center justify-center text-white hover:bg-white/20 hover:border-white/30 transition-all duration-300 group"
         onClick={prevSlide}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 1 }}
+        aria-label="Previous slide"
       >
-        <ChevronLeft className="h-6 w-6 group-hover:scale-110 transition-transform duration-200" />
-      </motion.button>
+        <ChevronLeft className="h-6 w-6 group-hover:scale-110 transition-transform" />
+      </button>
 
-      <motion.button
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 group"
+      <button
+        className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 items-center justify-center text-white hover:bg-white/20 hover:border-white/30 transition-all duration-300 group"
         onClick={nextSlide}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 1 }}
+        aria-label="Next slide"
       >
-        <ChevronRight className="h-6 w-6 group-hover:scale-110 transition-transform duration-200" />
-      </motion.button>
-
-      {/* Slide Indicators */}
-      <motion.div 
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 1.2 }}
-      >
-        {heroSlides.map((_, index) => (
-          <button
-            key={index}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide 
-                ? 'bg-primary scale-125' 
-                : 'bg-white/40 hover:bg-white/60'
-            }`}
-            onClick={() => goToSlide(index)}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </motion.div>
+        <ChevronRight className="h-6 w-6 group-hover:scale-110 transition-transform" />
+      </button>
       
-      {/* Content */}
-      <motion.div 
-        className="relative z-10 max-w-4xl mx-auto px-4 text-center"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        key={currentSlide} // Re-trigger animation on slide change
-      >
-        <motion.h1 
-          className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4" 
-          data-testid="text-hero-title"
-          variants={titleVariants}
-        >
-          <motion.span 
-            className="text-primary"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5, ease: "backOut" }}
-          >
-            {heroSlides[currentSlide].title}
-          </motion.span>
-          <motion.span
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
-            {" "}{heroSlides[currentSlide].subtitle}
-          </motion.span>
-        </motion.h1>
-        
-        <motion.p 
-          className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto" 
-          data-testid="text-hero-subtitle"
-          variants={itemVariants}
-        >
-          {heroSlides[currentSlide].description}
-        </motion.p>
-        
+      {/* Main Content Container */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
-          className="flex flex-wrap justify-center gap-4 mb-16"
-          variants={containerVariants}
+          className="text-center space-y-6 sm:space-y-8"
+          variants={contentVariants}
+          initial="hidden"
+          animate="visible"
+          key={currentSlide}
         >
-          <motion.div variants={buttonVariants}>
-            <a href={heroSlides[currentSlide].primaryButton.href}>
-            <MotionButton 
-              size="lg" 
-              className="bg-chart-2 hover:bg-chart-2 p-3 text-black font-semibold group"
-              data-testid="button-buy-now"
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 10px 25px rgba(255, 193, 7, 0.3)"
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {(() => {
-                const IconComponent = heroSlides[currentSlide].primaryButton.icon;
-                return <IconComponent className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform duration-200" />;
-              })()}
-              {heroSlides[currentSlide].primaryButton.text}
-            </MotionButton>
-            </a>
+          {/* Title */}
+          <motion.div variants={itemVariants} className="space-y-2 sm:space-y-3">
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
+              <span className="text-primary block sm:inline">
+                {heroSlides[currentSlide].title}
+              </span>
+              <span className="block sm:inline sm:ml-3 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-2 sm:mt-0">
+                {heroSlides[currentSlide].subtitle}
+              </span>
+            </h1>
           </motion.div>
           
-          <motion.div variants={buttonVariants}>
-            <a href={heroSlides[currentSlide].secondaryButton.href}>
-            <MotionButton 
-              size="lg" 
-              variant="outline" 
-              className="backdrop-blur-sm bg-white/20 p-3 border-white/40 text-white hover:bg-white/30 group"
-              data-testid="button-learn-more"
-              whileHover={{ 
-                scale: 1.05,
-                backgroundColor: "rgba(255, 255, 255, 0.3)"
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {(() => {
-                const IconComponent = heroSlides[currentSlide].secondaryButton.icon;
-                return <IconComponent className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform duration-200" />;
-              })()}
-              {heroSlides[currentSlide].secondaryButton.text}
-            </MotionButton>
+          {/* Description */}
+          <motion.p 
+            variants={itemVariants}
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 max-w-3xl mx-auto px-4 leading-relaxed"
+          >
+            {heroSlides[currentSlide].description}
+          </motion.p>
+          
+          {/* CTA Buttons */}
+          <motion.div 
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2"
+          >
+            <a href={heroSlides[currentSlide].primaryButton.href} className="w-full sm:w-auto">
+              <MotionButton 
+                size="lg" 
+                className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-black font-semibold px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg group shadow-lg"
+                whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(255, 193, 7, 0.4)" }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {React.createElement(heroSlides[currentSlide].primaryButton.icon, {
+                  className: "mr-2 h-5 w-5 group-hover:rotate-12 transition-transform"
+                })}
+                {heroSlides[currentSlide].primaryButton.text}
+              </MotionButton>
+            </a>
+            
+            <a href={heroSlides[currentSlide].secondaryButton.href} className="w-full sm:w-auto">
+              <MotionButton 
+                size="lg" 
+                variant="outline" 
+                className="w-full sm:w-auto backdrop-blur-md bg-white/10 border-2 border-white/40 text-white hover:bg-white/20 hover:border-white/60 px-6 sm:px-8 py-5 sm:py-6 text-base sm:text-lg group shadow-lg"
+                whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.25)" }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {React.createElement(heroSlides[currentSlide].secondaryButton.icon, {
+                  className: "mr-2 h-5 w-5 group-hover:rotate-12 transition-transform"
+                })}
+                {heroSlides[currentSlide].secondaryButton.text}
+              </MotionButton>
             </a>
           </motion.div>
         </motion.div>
+      </div>
 
-        {/* Scroll Indicator - Centered and Clean */}
+      {/* Bottom Section - Scroll Indicator + Slide Indicators */}
+      <div className="absolute bottom-20 sm:bottom-20 left-0 right-0 z-20 flex flex-col items-center gap-4">
+        {/* Slide Indicators */}
         <motion.div 
-          className="flex mt-10 flex-col items-center justify-center"
-          initial={{ opacity: 0, y: 20 }}
+          className="flex items-center justify-center gap-1.5 sm:gap-2"
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
         >
-          <motion.div 
-            className="flex flex-col items-center cursor-pointer group"
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            whileHover={{ scale: 1.1 }}
-          >
-            <div className="text-white/80 text-lg font-medium mb-3 group-hover:text-white transition-colors duration-300">
-              Scroll Down
-            </div>
-            <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:bg-white/20 transition-all duration-300">
-              <ArrowDown className="h-5 w-5 text-white group-hover:text-primary transition-colors duration-300" />
-            </div>
-          </motion.div>
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`transition-all duration-300 rounded-full ${
+                index === currentSlide 
+                  ? 'w-6 h-1.5 sm:w-8 sm:h-2 bg-primary shadow-lg shadow-primary/50' 
+                  : 'w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white/50 hover:bg-white/80'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+              aria-current={index === currentSlide ? 'true' : 'false'}
+            />
+          ))}
         </motion.div>
-      </motion.div>
 
-      {/* Auto-play Pause on Hover */}
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.5 }}
+        >
+          <motion.a
+            href="#features"
+            className="flex flex-col items-center gap-2 group cursor-pointer"
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <span className="hidden sm:block text-white/70 text-sm font-medium group-hover:text-white transition-colors">
+              Scroll to Explore
+            </span>
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-white/20 group-hover:border-white/30 transition-all">
+              <ArrowDown className="h-4 w-4 sm:h-5 sm:w-5 text-white" />
+            </div>
+          </motion.a>
+        </motion.div>
+      </div>
+
+      {/* Pause auto-play on hover (desktop only) */}
       <div 
-        className="absolute inset-0 z-5"
+        className="hidden md:block absolute inset-0 z-5"
         onMouseEnter={() => setIsAutoPlaying(false)}
         onMouseLeave={() => setIsAutoPlaying(true)}
       />
